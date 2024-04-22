@@ -1,2 +1,3 @@
-init
-ffff
+<<<<<<< HEAD
+##iniDINICDJOI
+>>>>>>> feature/installation
