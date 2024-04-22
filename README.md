@@ -1,3 +1,1 @@
-<<<<<<< HEAD
-##iniDINICDJOI
->>>>>>> feature/installation
+## Quick start 
