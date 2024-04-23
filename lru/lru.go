@@ -4,7 +4,7 @@ import (
 	"container/list"
 )
 
-type Cache struct {
+type Iru struct {
 
 	//存储k,v实现lru
 	ll *list.List
@@ -28,8 +28,8 @@ type Value interface {
 }
 
 // 初始化
-func New(maxBytes int64) *Cache {
-	return &Cache{
+func New(maxBytes int64) *Iru {
+	return &Iru{
 		ll:       &list.List{},
 		cache:    make(map[string]*list.Element),
 		maxBytes: maxBytes,
@@ -38,7 +38,7 @@ func New(maxBytes int64) *Cache {
 }
 
 // 增加或者更新
-func (c *Cache) Add(key string, value Value) {
+func (c *Iru) Add(key string, value Value) {
 	if ele, ok := c.cache[key]; ok {
 		//更新
 		c.ll.MoveToFront(ele)
@@ -63,7 +63,7 @@ func (c *Cache) Add(key string, value Value) {
 }
 
 // 删除最近未被访问的元素
-func (c *Cache) RemoveOldest() {
+func (c *Iru) RemoveOldest() {
 	//删除队尾元素
 	ele := c.ll.Back()
 	if ele != nil {
@@ -78,7 +78,7 @@ func (c *Cache) RemoveOldest() {
 }
 
 // 查询
-func (c *Cache) Get(key string) (value Value, ok bool) {
+func (c *Iru) Get(key string) (value Value, ok bool) {
 	if ele, ok := c.cache[key]; ok {
 		//存在
 		kv := ele.Value.(*entry)
@@ -89,6 +89,6 @@ func (c *Cache) Get(key string) (value Value, ok bool) {
 	return
 }
 
-func (c *Cache) Len() int {
+func (c *Iru) Len() int {
 	return c.ll.Len()
 }
