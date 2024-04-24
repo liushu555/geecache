@@ -27,7 +27,7 @@ type Group struct {
 }
 
 var (
-	groups map[string]*Group
+	groups = make(map[string]*Group)
 	mu     sync.RWMutex
 )
 

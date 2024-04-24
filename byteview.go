@@ -14,6 +14,10 @@ func (byteview Byteview) Len() int {
 	return len(byteview.bytes)
 }
 
+func (byteview Byteview) String() string {
+	return string(byteview.bytes)
+}
+
 func cloneByte(bytes []byte) []byte {
 	res := make([]byte, len(bytes))
 	copy(res, bytes)
